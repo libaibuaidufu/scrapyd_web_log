@@ -1,0 +1,17 @@
+HTMLParser==0.0.2
+kafka-python==1.4.6
+lxml==4.3.4
+pymongo==3.8.0
+PyMySQL==0.9.3
+pyOpenSSL==19.0.0
+pytz==2019.1
+redis==3.2.1
+requests==2.22.0
+requests-file==1.4.3
+Scrapy==1.6.0
+Twisted==19.2.1
+tzlocal==1.5.1
+urllib3==1.25.3
+scrapyd
+logparser
+

@@ -1,0 +1,60 @@
+FROM debian:stretch
+
+RUN echo "deb http://mirrors.163.com/debian/ testing main \
+deb http://mirrors.aliyun.com/debian/ stretch main non-free contrib \
+deb-src http://mirrors.aliyun.com/debian/ stretch main non-free contrib \
+deb http://mirrors.aliyun.com/debian-security stretch/updates main \
+deb-src http://mirrors.aliyun.com/debian-security stretch/updates main \
+deb http://mirrors.aliyun.com/debian/ stretch-updates main non-free contrib \
+deb-src http://mirrors.aliyun.com/debian/ stretch-updates main non-free contrib \
+deb http://mirrors.aliyun.com/debian/ stretch-backports main non-free contrib \
+deb-src http://mirrors.aliyun.com/debian/ stretch-backports main non-free contrib "> /etc/apt/sources.list
+
+RUN set -xe \
+    && apt-get update \
+    && apt-get install -y autoconf \
+                          build-essential \
+                          libffi-dev \
+                          libssl-dev \
+                          libtool \
+                          libxml2 \
+                          libxml2-dev \
+                          libxslt1.1 \
+                          libxslt1-dev \
+                          python3.6 \
+                          python3-dev \
+                          vim-tiny \
+                          python3-pip \
+    && apt-get install -y libtiff5 \
+                          libtiff5-dev \
+                          libfreetype6-dev \
+                          libjpeg62-turbo \
+                          libjpeg62-turbo-dev \
+                          liblcms2-2 \
+                          liblcms2-dev \
+                          libwebp6 \
+                          libwebp-dev \
+                          zlib1g \
+                          zlib1g-dev \
+    && pip3 install -i https://pypi.douban.com/simple scrapydweb \ 
+    && apt-get purge -y --auto-remove autoconf \
+                                      build-essential \
+                                      libffi-dev \
+                                      libssl-dev \
+                                      libtool \
+                                      libxml2-dev \
+                                      libxslt1-dev \
+                                      python3-dev \
+    && apt-get purge -y --auto-remove libtiff5-dev \
+                                      libfreetype6-dev \
+                                      libjpeg62-turbo-dev \
+                                      liblcms2-dev \
+                                      libwebp-dev \
+                                      zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
+    
+    
+COPY . /code
+WORKDIR /code
+
+CMD scrapydweb
