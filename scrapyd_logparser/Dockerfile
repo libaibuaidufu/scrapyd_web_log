@@ -1,4 +1,4 @@
-FROM lucascosta/serverless-python3.6:latest
+FROM python:3.6
 
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
 
