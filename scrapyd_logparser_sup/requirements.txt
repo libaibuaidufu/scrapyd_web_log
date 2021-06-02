@@ -1,6 +1,6 @@
 HTMLParser==0.0.2
 kafka-python==1.4.6
-lxml==4.3.4
+lxml==4.6.3
 pymongo==3.8.0
 PyMySQL==0.9.3
 pyOpenSSL==19.0.0
